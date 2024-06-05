@@ -3,29 +3,31 @@ const { Schema, model} = require ("mongoose");
     {
         eventName : {
             type : String,
-            description : String,
             unique : true,
             trim : true
         },
         firstName : {
             type : String,
-            description : String
+            required: true
         },
         lastName : {
             type : String,
-            description : String
+            required : true
         },
         age : {
-            type : Number
+            type : Number,
+            min : 0,
+            required: false
         },
         contactNumber : {
-            type: string,
-            description: String,
-            pattern: "^[+]?[0-9]{1,4}?[0-9]{7,15}$"
+            type: String,
+            required : true,
+            match: [/^[+]?[0-9]{1,4}?[0-9]{7,15}$/, 'Please enter a valid phone number']
         },
         email: {
             type: String,
             required: [true, 'Email is required.'],
+            match: [/\S+@\S+\.\S+/, 'Please enter a valid email address'],
             unique: true,
             lowercase: true,
             trim: true
@@ -34,4 +36,5 @@ const { Schema, model} = require ("mongoose");
 
 
     }
- )
+ );
+ module.exports = mongoose.model('Event', eventSchema);
