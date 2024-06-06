@@ -18,11 +18,7 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 
-// // MongoDB connection
-// mongoose.connect('mongodb://localhost:3000/event_registration', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
