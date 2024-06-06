@@ -18,11 +18,11 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 
-// MongoDB connection
-mongoose.connect('mongodb://localhost:3000/event_registration', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+// // MongoDB connection
+// mongoose.connect('mongodb://localhost:3000/event_registration', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
@@ -51,7 +51,7 @@ app.post('/events', async (req, res) => {
     }
   });
   // Use event routes
-app.use('/events', eventRoutes);
+app.use('/events', Event);
 
   // Get all events
   app.get('/events', async (req, res) => {
