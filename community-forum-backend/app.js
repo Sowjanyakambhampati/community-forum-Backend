@@ -22,7 +22,7 @@ app.use(express.json());
 //POST product
 app.post("/product", async (req, res, next) => {
   Product.create({
-    city: req.body.city,
+    neighbourhood: req.body.city,
     productName: req.body.productName,
     price: req.body.price,
     image: req.body.image,

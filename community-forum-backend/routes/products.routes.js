@@ -16,10 +16,10 @@ router.get("/", (req, res) => {
   // Create new product
   // Only admins can create new products
   router.post("/", (req, res) => {
-    const { city,productName, price, description,condition } = req.body;
+    const { neighbourhood,productName, price, description,condition } = req.body;
     
 
-    Products.create({ city,productName, price, description,condition })
+    Products.create({ neighbourhood,productName, price, description,condition })
       .then(newProduct => res.status(201).json(newProduct))
               .catch(err => res.status(500).json({ 
                   message: "Internal Server Error", err 
