@@ -5,9 +5,10 @@ const productSchema = new Schema({
   neighbourhood : { type : String, required : true},  
   productName: { type: String, required: true },
   price: { type: Number, required: true },
-  image : { data : Buffer, contentType: String },
+  image : { type : String, contentType: String },
   description: { type : String, required : false },
   condition : {type : String},
+  productowner : { type : String},
   category : { type : String , required : false}
  
 });

@@ -28,6 +28,7 @@ app.post("/product", async (req, res, next) => {
     image: req.body.image,
     description: req.body.description,
     condition: req.body.condition,
+    productowner : req.body.productowner,
     category: req.body.category,
   })
     .then((createdProduct) => {
