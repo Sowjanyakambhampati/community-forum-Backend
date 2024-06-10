@@ -1,9 +1,10 @@
 const express = require("express");
 const logger = require("morgan");
+const mongoose = require("mongoose");
 const Product = require("./models/Product.model");
 const Event = require("./models/Event.model");
-const mongoose = require("mongoose");
-
+const City = require("./models/city.model");
+const cityRoutes = require("./routes/city.routes");
 mongoose
   .connect(
     "mongodb+srv://community-forum:0v44NdQ3C3RFLBye@community-forum-cluster.c0vfqhs.mongodb.net/?retryWrites=true&w=majority&appName=community-forum-cluster"
@@ -13,11 +14,67 @@ mongoose
   )
   .catch((err) => console.error("Error connecting to mongo", err));
 const app = express();
+const cors = require("cors");
+app.use(cors());
 
-// Middleware
-app.use(logger("dev"));
-app.use(express.static("public"));
-app.use(express.json());
+app.get("/cities", async (req, res) => {
+  try {
+    const cities = await City.find();
+    res.json(cities);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+//POST Cities
+app.post ("/city", async (req, res, next)=>{
+  City.create({
+    cityname : req.body.cityname
+  })
+  .then((createdCity) => {
+    console.log("City created ->", createdCity);
+    res.status(201).send(createdCity);
+  })
+  .catch((error) => {
+    console.error("Error while creating the city ->", error);
+    res.status(500).send({ error: "Failed to create the city" });
+  });
+})
+
+app.post('/add-city', async (req, res) => {
+  const city = new City({
+    name: req.body.name,
+  });
+
+  try {
+    const newCity = await city.save();
+    res.status(201).json(newCity);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+//POST Event
+app.post("/event", async (req, res, next) => {
+  Event.create({
+    title: req.body.title,
+    description: req.body.description,
+    date: req.body.date,
+    city: req.body.city,
+    location: req.body.location,
+    organiser: req.body.organiser, 
+    attendees: req.body.attendees 
+  })
+    .then((createdEvent) => {
+      console.log("Event created ->", createdEvent);
+      res.status(201).send(createdEvent);
+    })
+    .catch((error) => {
+      console.error("Error while creating the event ->", error);
+      res.status(500).send({ error: "Failed to create the event" });
+    });
+});
+
 
 //POST product
 app.post("/product", async (req, res, next) => {
@@ -40,26 +97,7 @@ app.post("/product", async (req, res, next) => {
       res.status(500).send({ error: "Failed to create the product" });
     });
 });
-//POST Event
-app.post("/event", async (req, res, next) => {
-    Event.create({
-      title: req.body.title,
-      description: req.body.description,
-      date: req.body.date,
-      city: req.body.city,
-      location: req.body.location,
-      organiser: req.body.organiser, 
-      attendees: req.body.attendees 
-    })
-      .then((createdEvent) => {
-        console.log("Event created ->", createdEvent);
-        res.status(201).send(createdEvent);
-      })
-      .catch((error) => {
-        console.error("Error while creating the event ->", error);
-        res.status(500).send({ error: "Failed to create the event" });
-      });
-  });
+
 
 app.listen(5005, () => console.log("App listening on port 5005"));
 
