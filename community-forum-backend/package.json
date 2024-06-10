@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "presets": "@babel/preset-env",
+  "main": "app.js",
   "scripts": {
     "dev": "nodemon server.js",
     "build": "babel config -d dist",
