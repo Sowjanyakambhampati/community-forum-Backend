@@ -1,7 +1,8 @@
-const mongoose = require ('mongoose');
-const citySchema = new mongoose.Schema ({
-    cityname: { type: String, required: true },
-})
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const citySchema = new Schema({
+  cityname: { type: String, required: true }
+});
 const City = mongoose.model("City", citySchema);
 
 module.exports = City;
