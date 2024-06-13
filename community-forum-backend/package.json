@@ -2,11 +2,10 @@
   "name": "community-forum-backend-server",
   "version": "0.0.0",
   "private": true,
-  "presets": "@babel/preset-env",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node app.js --port=5005",
+    "start": "node server.js --port=5005",
     "build": "node app.js"
   },
   "dependencies": {
