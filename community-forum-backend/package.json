@@ -5,7 +5,9 @@
   "presets": "@babel/preset-env",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "build": "node app.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
