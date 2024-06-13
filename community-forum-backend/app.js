@@ -3,7 +3,6 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const cityRoutes = require("./routes/city.routes");
 const productRoutes = require("./routes/product.routes");
-const serverless = require('serverless-http');
 mongoose
   .connect(
     "mongodb+srv://community-forum:0v44NdQ3C3RFLBye@community-forum-cluster.c0vfqhs.mongodb.net/?retryWrites=true&w=majority&appName=community-forum-cluster"
@@ -22,4 +21,4 @@ app.use('/product', productRoutes);
 
 app.listen(5005, () => console.log("App listening on port 5005"));
 
-module.exports.handler = serverless(app);
+module.exports.handler = app;
