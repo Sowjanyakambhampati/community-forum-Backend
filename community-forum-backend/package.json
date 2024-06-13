@@ -6,8 +6,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "build": "babel config -d dist",
-    "start": "node app.js"
+    "build": "netlify-lambda build netlify/functions",
+    "start": "netlify-lambda serve netlify/functions"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
