@@ -1,9 +1,6 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const Product = require("./models/Product.model");
-const Event = require("./models/Event.model");
-const City = require("./models/City.model");
 const cityRoutes = require("./routes/city.routes");
 const productRoutes = require("./routes/product.routes");
 mongoose
@@ -22,8 +19,6 @@ app.use(express.json());
 app.use('/city', cityRoutes);
 app.use('/product', productRoutes);
 
-
-
 app.listen(5005, () => console.log("App listening on port 5005"));
 
-module.exports = app;
+module.exports.handler = app;
