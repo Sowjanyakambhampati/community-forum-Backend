@@ -36,6 +36,36 @@ class ProductController {
         }
     }
 
+    // Update a product
+    async updateProduct(req, res) {
+        try {
+            const productId = req.params.id;
+            const updates = req.body;
+            const options = { new: true }; // Return the updated product
+            const updatedProduct = await Product.findByIdAndUpdate(productId, updates, options);
+            if (!updatedProduct) {
+                return res.status(404).send("Product not found");
+            }
+            res.send(updatedProduct);
+        } catch (error) {
+            res.status(400).send(error);
+        }
+    }
+
+    // Delete a product
+    async deleteProduct(req, res) {
+        try {
+            const productId = req.params.id;
+            const deletedProduct = await Product.findByIdAndDelete(productId);
+            if (!deletedProduct) {
+                return res.status(404).send("Product not found");
+            }
+            res.send(deletedProduct);
+        } catch (error) {
+            res.status(400).send(error);
+        }
+    }
+
 
     //Endpoint to upload a product image 
     //  async createImage('/product/:id/upload',('image'), 
