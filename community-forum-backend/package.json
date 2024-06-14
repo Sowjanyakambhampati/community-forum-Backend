@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js --port=5005",
-    "build": "npm run build"
+    "start": "node app.js",
+    "build": "echo 'No build step'"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
