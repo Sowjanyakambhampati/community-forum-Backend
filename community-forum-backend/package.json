@@ -4,8 +4,8 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "build": "webpack --mode production"
+    "dev": "nodemon ./src/index",
+    "start": "node ./src/index"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
