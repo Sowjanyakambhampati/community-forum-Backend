@@ -20,6 +20,6 @@ app.use('/city', cityRoutes);
 app.use('/product', productRoutes);
 
 
-app.listen(5005, () => console.log("App listening on port 5005"));
+//app.listen(5005, () => console.log("App listening on port 5005"));
 
 module.exports.handler = app;
