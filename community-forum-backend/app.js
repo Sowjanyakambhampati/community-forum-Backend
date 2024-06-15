@@ -1,5 +1,6 @@
 const express = require("express");
 const logger = require("morgan");
+const path = require('path');
 const mongoose = require("mongoose");
 const cityRoutes = require("./routes/city.routes");
 const productRoutes = require("./routes/product.routes");
@@ -22,4 +23,4 @@ app.use('/product', productRoutes);
 
 //app.listen(5005, () => console.log("App listening on port 5005"));
 
-module.exports.handler = app;
+module.exports = app;
