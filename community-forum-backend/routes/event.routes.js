@@ -1,37 +1,15 @@
-const express = require('express');
+//event.routes.js
+const express = require("express");
 const router = express.Router();
-const Events = require ("../model/Event.model");
-const { isAuthenticated } = require("../middleware/jwt.middleware");
-const {roles} = require("../middleware/roles.middleware");
+const eventController = require("../controllers/event.controller");
+const fileUploader = require("../config/cloudinary.config");
 
-// Get all events
-router.get("/", (req, res) => {
-    Events.find()
-      .then(events => res.json(events))
-      .catch(err => res.status(500).json({
-          message: "Internal Server Error", err 
-       }));
-  });
-  // Create new event
-  // Only admins can create new event
-  router.post("/", (req, res) => {
-    const { title,description,date,city,location,organiser, attendees = {
-        firstName,
-        lastName,
-        age,
-        contactNumber,
-        email
-      }} = req.body;
-    
-    
+router.post("/", fileUploader.single("image"), eventController.createEvent);
 
-    Events.create({ title,description,date,city,location,organiser,attendees})
-      .then(newEvent => res.status(201).json(newEvent))
-              .catch(err => res.status(500).json({ 
-                  message: "Internal Server Error", err 
-      }));
-  });
+router.get("/", eventController.getAllEvents);
 
+router.put("/:id", fileUploader.single("image"), eventController.updateEvent);
 
+router.delete("/:id", eventController.deleteEvent);
 
 module.exports = router;

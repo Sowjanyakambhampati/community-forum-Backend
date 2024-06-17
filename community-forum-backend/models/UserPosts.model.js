@@ -9,4 +9,4 @@ const userPostsSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('UserPosts', postSchema);
+module.exports = mongoose.model('UserPosts', userPostsSchema);

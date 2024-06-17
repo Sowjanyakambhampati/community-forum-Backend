@@ -10,7 +10,7 @@ const router = express.Router();
 
 // Root route
 router.get('/', (req, res) => {
-  res.send('Welcome to the Community Forum API');
+  res.send('Welcome to the BuurtHub API');
 });
 
 module.exports = router;
