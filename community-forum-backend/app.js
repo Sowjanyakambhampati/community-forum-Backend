@@ -6,7 +6,7 @@ const cityRoutes = require("./routes/city.routes");
 const productRoutes = require("./routes/product.routes");
 const eventRoutes = require("./routes/event.routes");
 const topicRoutes = require("./routes/topic.routes");
-const userPostsRoutes = require("./routes/userPosts.routes");
+const postsRoutes = require("./routes/posts.routes");
 
 mongoose
   .connect(
@@ -25,7 +25,7 @@ app.use('/city', cityRoutes);
 app.use('/product', productRoutes);
 app.use('/event', eventRoutes);
 app.use('/topic', topicRoutes);
-app.use('/user', userPostsRoutes);
+app.use('/posts', postsRoutes);
 
 
 
