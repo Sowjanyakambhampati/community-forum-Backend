@@ -1,19 +1,32 @@
 //event.controller.js
 
-const Event = require("../models/Event.model");
+const Event = require("../models/Event.model.js");
 
 class EventController {
     
         // Create a new event
         async createEvent(req, res) {
+            // check if there's an image
+            if (!req.file) {
+                next(new Error("No image uploaded!"));
+                return;
+            }
+
+            
+        console.log(req.body)
+        console.log(req.file.path)
             try {
-                const event = new Event(req.body);
+                const event = new Event({ image: req.file.path, ...req.body });
                 await event.save();
                 res.status(201).send(event);
-            } catch (error) {
+            }
+            catch (error) {
                 res.status(400).send(error);
             }
         }
+        
+
+
     
         // Get all events
         async getAllEvents(req, res) {
