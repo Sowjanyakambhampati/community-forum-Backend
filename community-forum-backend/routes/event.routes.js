@@ -10,7 +10,7 @@ router.get("/", eventController.getAllEvents);
 
 router.get("/:id", eventController.getEventById);
 
-router.put("/:id", fileUploader.single("image"), eventController.updateEvent);
+router.put("/", fileUploader.single("image"), eventController.updateEvent);
 
 router.put("/:id", eventController.updateEvent);
 
