@@ -37,6 +37,22 @@ class EventController {
                 res.status(500).send(error);
             }
         }
+
+        // Get event by id
+        async getEventById(req, res) {
+            try {
+                const eventId = req.params.id;
+                const event = await Event.findById(eventId);
+                if (!event) {
+                    return res.status(404).send("Event not found");
+                }
+                res.send(event);
+            }
+            catch (error) {
+                res.status(500).send(error);
+            }
+        }
+        
     
         // Update event
         async updateEvent(req, res) {
