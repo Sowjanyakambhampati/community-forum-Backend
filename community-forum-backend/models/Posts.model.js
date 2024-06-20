@@ -10,6 +10,6 @@ const PostsSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-const Posts = mongoose.model('UserPosts', PostsSchema);
+const Posts = mongoose.model('Posts', PostsSchema);
 
 module.exports = Posts;

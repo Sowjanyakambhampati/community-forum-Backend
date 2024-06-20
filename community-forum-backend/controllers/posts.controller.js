@@ -6,9 +6,9 @@ class PostsController {
     // Create a new  post
     async createPost(req, res) {
         try {
-            const Post = new Posts(req.body);
-            await Post.save();
-            res.status(201).send(Post);
+            const post = new Posts(req.body);
+            await post.save();
+            res.status(201).send(post);
         } catch (error) {
             res.status(400).send(error);
         }
@@ -17,12 +17,29 @@ class PostsController {
     // Get all  posts
     async getAllPosts(req, res) {
         try {
-            const Posts = await Posts.find({});
-            res.send(Posts);
+            const posts = await Posts.find({});
+            res.send(posts);
         } catch (error) {
+            res.status(500).send (error);
+        }
+    }
+
+    // Get  post by id
+    async getPostById(req, res) {
+        try {
+            const PostId = req.params.id;
+            const post = await Posts.findById(PostId);
+            if (!post) {
+                return res.status(404).send("post not found");
+            }
+            res.send(post);
+        }
+        catch (error) {
             res.status(500).send(error);
         }
     }
+    
+
 
     // Update  post
     async updatePost(req, res) {
@@ -55,4 +72,4 @@ class PostsController {
     }
 }
 
-module.exports = new PostsController;
+module.exports = new PostsController();

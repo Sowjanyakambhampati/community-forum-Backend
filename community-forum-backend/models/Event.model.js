@@ -31,6 +31,19 @@ const eventSchema = new Schema({
     type: String,
     required: true,
   },
+  participants: {
+    type: Array,
+    required: false,
+  },
+  time: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: String,
+    enum: ["paid", "free"],
+    required: true,
+  },
 });
 
 const Event = mongoose.model('Event', eventSchema);

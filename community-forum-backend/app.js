@@ -7,7 +7,6 @@ const productRoutes = require("./routes/product.routes");
 const eventRoutes = require("./routes/event.routes");
 const topicRoutes = require("./routes/topic.routes");
 const postsRoutes = require("./routes/posts.routes");
-
 mongoose
   .connect(
     "mongodb+srv://community-forum:0v44NdQ3C3RFLBye@community-forum-cluster.c0vfqhs.mongodb.net/?retryWrites=true&w=majority&appName=community-forum-cluster"
