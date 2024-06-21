@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cityRoutes = require("./routes/city.routes");
 const productRoutes = require("./routes/product.routes");
 const eventRoutes = require("./routes/event.routes");
-const topicRoutes = require("./routes/topic.routes");
+const topicRoutes = require("./routes/topics.routes");
 const postsRoutes = require("./routes/posts.routes");
 mongoose
   .connect(

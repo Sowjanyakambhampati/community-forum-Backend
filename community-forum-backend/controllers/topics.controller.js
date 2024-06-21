@@ -22,7 +22,24 @@ class TopicController {
         res.status(500).send(error);
         }
     }
-    
+
+    // Get topic by id
+    async getTopicById(req, res) {
+        try {
+        const topicId = req.params.id;
+        const topic = await Topic
+            .findById(topicId)
+            .populate('author', 'username');
+        if (!topic) {
+            return res.status(404).send("Topic not found");
+        }
+        res.send(topic);
+        }
+        catch (error) {
+        res.send(500).send (error);
+        }
+    }
+        
     // Update topic
     async updateTopic(req, res) {
         try {
