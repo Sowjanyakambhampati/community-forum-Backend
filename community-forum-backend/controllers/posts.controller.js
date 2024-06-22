@@ -5,6 +5,13 @@ class PostsController {
 
     // Create a new  post
     async createPost(req, res) {
+        if (!req.file) {
+            next(new Error("No image uploaded!"));
+            return;
+        }
+        console.log(req.body)
+        console.log(req.file.path)
+        
         try {
             const post = new Posts(req.body);
             await post.save();
@@ -38,7 +45,7 @@ class PostsController {
             res.status(500).send(error);
         }
     }
-    
+
 
 
     // Update  post
