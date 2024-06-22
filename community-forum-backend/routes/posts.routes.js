@@ -5,13 +5,13 @@ const fileUploader = require("../config/cloudinary.config");
 
 router.post("/", fileUploader.single("image"), postsController.createPost);
 
-router.post("/", postsController.createPost);
+//router.post("/", postsController.createPost);
 
 router.get("/", postsController.getAllPosts);   
 
 router.get("/:id", postsController.getPostById);
 
-router.put('/',postsController.updatePost); 
+router.put("/", fileUploader.single("image"), postsController.updatePost);
 
 router.put("/:id", postsController.updatePost);
 
