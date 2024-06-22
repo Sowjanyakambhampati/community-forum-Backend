@@ -8,6 +8,7 @@ const PostsSchema = new Schema({
   content: String,
   author: { type: String, required: true},
   image: { type: String, required: false },
+  contactinfo: { type: String, required: false },
   createdAt: { type: Date, default: Date.now }
 });
 
