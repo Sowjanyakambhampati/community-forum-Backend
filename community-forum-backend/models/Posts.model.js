@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PostsSchema = new Schema({
+  city: { type: String, required: true },
   title: String,
   content: String,
   author: { type: String, required: true},
