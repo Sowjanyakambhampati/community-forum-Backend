@@ -52,7 +52,21 @@ class EventController {
                 res.status(500).send(error);
             }
         }
-        
+
+        // Get events by city
+        async getEventsByCity(req, res) {
+            try {
+                const city = req.params.city;
+                const events = await Event.find({ city: city });
+                if (!events) {
+                    return res.status(404).send("Events not found");
+                }
+                res.send(events);
+            } catch (error) {
+                res.status(500).send(error);
+            }
+        }
+
     
         // Update event
         async updateEvent(req, res) {

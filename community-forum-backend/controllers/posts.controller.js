@@ -46,6 +46,21 @@ class PostsController {
         }
     }
 
+    // Get  posts by city
+    async getPostsByCity(req, res) {
+        try {
+            const city = req.params.city;
+            const posts = await Posts.find({});
+            if (!posts) {
+                return res.status(404).send("posts not found");
+            }
+            res.send(posts);
+        }
+        catch (error) {
+            res.status(500).send (error);
+        }
+    }
+    
 
 
     // Update  post

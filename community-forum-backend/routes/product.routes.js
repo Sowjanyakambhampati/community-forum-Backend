@@ -7,7 +7,15 @@ router.post("/", fileUploader.single("image"), productController.createProduct);
 
 router.get("/", productController.getAllProducts);
 
-router.put("/:id", fileUploader.single("image"), productController.updateProduct);
+router.get("/city/:city", productController.getProductsByCity);
+
+router.get("/:id", productController.getProductById);
+
+router.put("/", fileUploader.single("image"), productController.updateProduct);
+
+router.put("/:id", productController.updateProduct);
+
+router.delete("/", productController.deleteProduct);
 
 router.delete("/:id", productController.deleteProduct);
 

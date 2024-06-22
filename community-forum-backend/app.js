@@ -22,9 +22,13 @@ app.use(express.json());
 
 app.use('/city', cityRoutes);
 app.use('/product', productRoutes);
+app.use('/product/city/:city', productRoutes);
 app.use('/event', eventRoutes);
+app.use('/event/city/:city', eventRoutes);
 app.use('/topic', topicRoutes);
+app.use('/topic/city/:city', postsRoutes);
 app.use('/posts', postsRoutes);
+app.use('/posts/city/:city', postsRoutes);
 
 
 

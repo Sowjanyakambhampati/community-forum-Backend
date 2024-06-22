@@ -39,6 +39,21 @@ class TopicController {
         res.send(500).send (error);
         }
     }
+
+    // Get topics by city
+    async getTopicsByCity(req, res) {
+        try {
+        const city = req.params.city;
+        const topics = await Topic .find({ city: city }).populate('author', 'username');
+        if (!topics) {
+            return res.status(404).send("Topics not found");
+        }
+        res.send(topics);
+        }
+        catch (error) {
+        res.status(500).send(error);
+        }
+    }
         
     // Update topic
     async updateTopic(req, res) {

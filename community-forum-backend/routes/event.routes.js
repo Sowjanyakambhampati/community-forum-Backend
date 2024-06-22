@@ -8,6 +8,8 @@ router.post("/", fileUploader.single("image"), eventController.createEvent);
 
 router.get("/", eventController.getAllEvents);
 
+router.get("/city/:city", eventController.getEventsByCity);
+
 router.get("/:id", eventController.getEventById);
 
 router.put("/", fileUploader.single("image"), eventController.updateEvent);

@@ -36,6 +36,35 @@ class ProductController {
         }
     }
 
+    // Get product by id
+    async getProductById(req, res) {
+        try {
+            const productId = req.params.id;
+            const product = await Product.findById(productId);
+            if (!product) {
+                return res.status(404).send("Product not found");
+            }
+            res.send(product);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    }
+
+    // Get products by city
+    async getProductsByCity(req, res) {
+        try {
+            const city = req.params.city;
+            const products = await Product.find({ city: city });
+            if (!products) {
+                return res.status(404).send("Products not found");
+            }
+            res.send(products);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    }
+
+
     // Update a product
     async updateProduct(req, res) {
         try {

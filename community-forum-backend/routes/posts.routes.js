@@ -7,7 +7,9 @@ router.post("/", fileUploader.single("image"), postsController.createPost);
 
 //router.post("/", postsController.createPost);
 
-router.get("/", postsController.getAllPosts);   
+router.get("/", postsController.getAllPosts);  
+
+router.get("/city/:city", postsController.getPostsByCity);
 
 router.get("/:id", postsController.getPostById);
 

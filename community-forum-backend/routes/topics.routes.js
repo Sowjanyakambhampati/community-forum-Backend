@@ -7,7 +7,11 @@ router.post("/", topicController.createTopic);
 
 router.get("/", topicController.getAllTopics);
 
+router.get("/city/:city", topicController.getTopicsByCity);
+
 router.get("/:id", topicController.getTopicById);
+
+router.put("/", topicController.updateTopic);
 
 router.put("/:id", topicController.updateTopic);
 
