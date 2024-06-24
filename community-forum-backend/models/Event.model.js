@@ -41,7 +41,7 @@ const eventSchema = new Schema({
   },
   price: {
     type: String,
-    enum: ["paid", "free"],
+    enum: ["Paid", "Free"],
     required: true,
   },
 });
