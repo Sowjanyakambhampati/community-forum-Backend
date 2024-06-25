@@ -38,6 +38,7 @@ app.use('/product', productRoutes);
 app.use('/product/:city', productRoutes);
 app.use('/event', eventRoutes);
 app.use('/event/:city', eventRoutes);
+app.use('/event/:id/:city', eventRoutes);
 app.use('/topic', topicRoutes);
 app.use('/topic/:city', postsRoutes);
 app.use('/posts', postsRoutes);

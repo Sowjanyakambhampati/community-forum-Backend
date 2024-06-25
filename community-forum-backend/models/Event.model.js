@@ -12,8 +12,15 @@ const eventSchema = new Schema({
     required: true,
   },
   location: {
-    type: String,
-    required: true,
+    type: {
+      type: String,
+      enum: ["Point"],
+      required: true,
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+    },
   },
   image: {
     type: String,
@@ -46,7 +53,7 @@ const eventSchema = new Schema({
   },
 });
 
-const Event = mongoose.model('Event', eventSchema);
+const Event = mongoose.model("Event", eventSchema);
 
 // EXPORT THE MODEL
 module.exports = Event;
