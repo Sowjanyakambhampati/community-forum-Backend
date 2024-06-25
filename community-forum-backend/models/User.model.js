@@ -30,7 +30,23 @@ const userSchema = new Schema({
 name :{
   type : String,
   required : true
-}
+}, 
+addedproducts :{
+  type : Array,
+  default : []
+},
+registeredevents :{
+  type : Array,
+  default : []
+},
+myposts :{
+  type : Array,
+  default : []
+},
+mytopics :{
+  type : Array,
+  default : []
+},
 });
 
 const User = mongoose.model('User', userSchema);
