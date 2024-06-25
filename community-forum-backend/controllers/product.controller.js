@@ -36,6 +36,23 @@ class ProductController {
         }
     }
 
+    // Get products by city
+
+    async getProductsByCity(req, res) {
+        try {
+            const city = req.params.city;
+            const products = await Product.find({ city: city });
+            if (!products) {
+                return res.status(404).send("Products not found");
+            }
+            res.send(products);
+        }
+        catch (error) {
+            res.status(500).send (error);
+        }
+    }
+    
+
     // Get product by id
     async getProductById(req, res) {
         try {

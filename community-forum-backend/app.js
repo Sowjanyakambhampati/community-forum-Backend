@@ -35,13 +35,13 @@ app.use("/admin", adminRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use('/city', cityRoutes);
 app.use('/product', productRoutes);
-app.use('/product/:city', productRoutes);
+app.use('/product/city/:city', productRoutes);
 app.use('/event', eventRoutes);
-app.use('/event/:city', eventRoutes);
+app.use('/event/city/:city', eventRoutes);
 app.use('/topic', topicRoutes);
-app.use('/topic/:city', postsRoutes);
+app.use('/topic/city/:city', postsRoutes);
 app.use('/posts', postsRoutes);
-app.use('/posts/:city', postsRoutes);
+app.use('/posts/city/:city', postsRoutes);
 
 
 
