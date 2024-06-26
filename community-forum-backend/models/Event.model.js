@@ -21,6 +21,14 @@ const eventSchema = new Schema({
       type: [Number],
       required: true,
     },
+    latitude: {
+      type: Number,
+      required: true,
+    },
+    longitude: {
+      type: Number,
+      required: true,
+    },
   },
   image: {
     type: String,
@@ -53,7 +61,8 @@ const eventSchema = new Schema({
   },
 });
 
+eventSchema.index({ location: "2dsphere" });
+
 const Event = mongoose.model("Event", eventSchema);
 
-// EXPORT THE MODEL
 module.exports = Event;
