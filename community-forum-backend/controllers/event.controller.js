@@ -5,7 +5,7 @@ const Event = require("../models/Event.model.js");
 class EventController {
     
         // Create a new event
-        async createEvent(req, res) {
+        async createEvent(req, res,next) {
             // check if there's an image
             if (!req.file) {
                 next(new Error("No image uploaded!"));
@@ -26,7 +26,7 @@ class EventController {
         }
         
          // Get all events
-         
+
         async getAllEvents(req, res) {
             try {
                 const events = await Event.find({});
