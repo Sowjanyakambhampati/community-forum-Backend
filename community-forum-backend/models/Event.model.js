@@ -59,9 +59,14 @@ const eventSchema = new Schema({
     enum: ["Paid", "Free"],
     required: true,
   },
+  category: {
+    type: String,
+    enum: ["Art and Culture", "Health and Wellness", "Entertainment", "Sports", "Technology", "Education", "Community & Environment","Career"],
+    required: true,
+  },
 });
 
-eventSchema.index({ location: "2dsphere" });
+//eventSchema.index({ location: "2dsphere" });
 
 const Event = mongoose.model("Event", eventSchema);
 

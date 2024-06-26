@@ -25,10 +25,8 @@ class EventController {
             }
         }
         
-
-
-    
-        // Get all events
+         // Get all events
+         
         async getAllEvents(req, res) {
             try {
                 const events = await Event.find({});
@@ -68,22 +66,9 @@ class EventController {
             }
         }
 
-        // Get events by city
-        async getEventsByCity(req, res) {
-            try {
-                const city = req.params.city;
-                const events = await Event.find({ city: city });
-                if (!events) {
-                    return res.status(404).send("Events not found");
-                }
-                res.send(events);
-            } catch (error) {
-                res.status(500).send(error);
-            }
-        }
-
-    
-        // Update event
+        
+        
+        //update an event by id
         async updateEvent(req, res) {
             try {
                 const eventId = req.params.id;
@@ -98,8 +83,10 @@ class EventController {
                 res.status(400).send(error);
             }
         }
+
+
     
-        // Delete event
+        // Delete event by id
         async deleteEvent(req, res) {
             try {
                 const eventId = req.params.id;
@@ -114,4 +101,5 @@ class EventController {
         }
     }
 
+    
 module.exports = new EventController();

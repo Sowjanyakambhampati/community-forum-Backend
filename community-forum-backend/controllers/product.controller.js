@@ -51,7 +51,7 @@ class ProductController {
             res.status(500).send (error);
         }
     }
-    
+
 
     // Get product by id
     async getProductById(req, res) {
@@ -113,23 +113,21 @@ class ProductController {
     }
 
 
-    // Get a single product
-    
-    async getSingleProduct(req, res) {
+    // Get products by category
+    async getProductsByCategory(req, res) {
         try {
-            const productId = req.params.id;
-            const product = await
-                Product.findById(productId);
-            if (!product) {
-                return res.status(404).send("Product not found");
+            const category = req.params.category;
+            const products = await Product.find({ category: category });
+            if (!products) {
+                return res.status(404).send("Products not found");
             }
-            res.send(product);
-
-}
-        catch (error) {
-          res.status(500).send(error);
+            res.send(products);
         }
-    }
+        catch (error) {
+            res.status(500).send(error);
+        }
 
 }
+}
+
 module.exports = new ProductController();
