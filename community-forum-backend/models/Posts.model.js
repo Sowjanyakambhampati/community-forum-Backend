@@ -10,7 +10,7 @@ const postsSchema = new Schema({
   author: { type: String, required: true},
   image : { type : String, contentType: String },
   contactInfo: { type: String, required: false },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, required: false }
 });
 
 const Posts = mongoose.model('Posts', postsSchema);
