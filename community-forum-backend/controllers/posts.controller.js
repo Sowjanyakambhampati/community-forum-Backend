@@ -13,9 +13,9 @@ class PostsController {
         console.log(req.file.path)
         
         try {
-            const post = new Posts(req.body);
-            await post.save();
-            res.status(201).send(post);
+            const posts = new Posts( { image: req.file.path, ...req.body });
+            await posts.save();
+            res.status(201).send(posts);
         } catch (error) {
             res.status(400).send(error);
         }
