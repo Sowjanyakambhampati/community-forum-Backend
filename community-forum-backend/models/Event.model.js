@@ -1,22 +1,69 @@
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const attendeeSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  age: Number,
-  contactNumber: String,
-  email: String
+const eventSchema = new Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
+  location: {
+    type: {
+      type: String,
+      enum: ["Point"],
+      required: true,
+    },
+    
+    latitude: {
+      type: Number,
+      required: true,
+    },
+    longitude: {
+      type: Number,
+      required: true,
+    },
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  organiser: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
+    required: true,
+  },
+  participants: [{ 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User' }],
+  time: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: String,
+    enum: ["Paid", "Free"],
+    required: true,
+  },
+  category: {
+    type: String,
+    enum: ["Art and Culture", "Health and Wellness", "Entertainment", "Sports", "Technology", "Education", "Community & Environment","Career"],
+    required: true,
+  },
 });
 
-const eventSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  date: Date,
-  city: String,
-  location: String,
-  organiser: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  attendees: [attendeeSchema] 
-});
+//eventSchema.index({ location: "2dsphere" });
 
-module.exports = mongoose.model('Event', eventSchema);
+const Event = mongoose.model("Event", eventSchema);
+
+module.exports = Event;

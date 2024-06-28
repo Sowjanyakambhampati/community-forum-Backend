@@ -3,10 +3,12 @@
 const mongoose = require('mongoose');
 
 const topicSchema = new mongoose.Schema({
+  city: { type: String, required: true },
   title: String,
   description: String,
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
 });
 
 module.exports = mongoose.model('Topic', topicSchema);

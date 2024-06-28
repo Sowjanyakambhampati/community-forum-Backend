@@ -36,6 +36,52 @@ class ProductController {
         }
     }
 
+    // Get products by city
+
+    async getProductsByCity(req, res) {
+        try {
+            const city = req.params.city;
+            const products = await Product.find({ city: city });
+            if (!products) {
+                return res.status(404).send("Products not found");
+            }
+            res.send(products);
+        }
+        catch (error) {
+            res.status(500).send (error);
+        }
+    }
+
+
+    // Get product by id
+    async getProductById(req, res) {
+        try {
+            const productId = req.params.id;
+            const product = await Product.findById(productId);
+            if (!product) {
+                return res.status(404).send("Product not found");
+            }
+            res.send(product);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    }
+
+    // Get products by city
+    async getProductsByCity(req, res) {
+        try {
+            const city = req.params.city;
+            const products = await Product.find({ city: city });
+            if (!products) {
+                return res.status(404).send("Products not found");
+            }
+            res.send(products);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    }
+
+
     // Update a product
     async updateProduct(req, res) {
         try {
@@ -67,21 +113,21 @@ class ProductController {
     }
 
 
-    //Endpoint to upload a product image 
-    //  async createImage('/product/:id/upload',('image'), 
+    // Get products by category
+    async getProductsByCategory(req, res) {
+        try {
+            const category = req.params.category;
+            const products = await Product.find({ category: category });
+            if (!products) {
+                return res.status(404).send("Products not found");
+            }
+            res.send(products);
+        }
+        catch (error) {
+            res.status(500).send(error);
+        }
 
-    // // controllers/product.controller.js
-    // async getProductsByCity(req, res) {
-    //   try {
-    //     const city = req.params.city;
-    //     const products = await Product.find({ city: city }).then((products) =>
-    //       res.json(products)
-    //     );
-    //     res.send(products);
-    //   } catch (error) {
-    //     res.status(500).send(error);
-    //   }
-    // }
+}
 }
 
 module.exports = new ProductController();
