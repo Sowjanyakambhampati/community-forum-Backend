@@ -1,6 +1,7 @@
 // models/userPosts.js
 
 const mongoose = require('mongoose');
+const { create } = require('./Event.model');
 const Schema = mongoose.Schema;
 
 const postsSchema = new Schema({
@@ -10,7 +11,7 @@ const postsSchema = new Schema({
   author: { type: String, required: true},
   image : { type : String, contentType: String },
   contactInfo: { type: String, required: false },
-  createdAt: { type: Date, required: false }
+ createdAt: { type: Date, default: Date.now, required: true },
 });
 
 const Posts = mongoose.model('Posts', postsSchema);

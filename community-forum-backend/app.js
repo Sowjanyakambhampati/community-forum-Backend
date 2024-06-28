@@ -11,6 +11,7 @@ const authRoutes = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const adminRoutes = require("./routes/admin.routes");
 const dashboardRoutes = require("./routes/dashboard.routes");
+const GeoAPIRoutes = require("./routes/GeoAPI.routes");
 mongoose
   .connect(
     "mongodb+srv://community-forum:0v44NdQ3C3RFLBye@community-forum-cluster.c0vfqhs.mongodb.net/?retryWrites=true&w=majority&appName=community-forum-cluster"
@@ -29,6 +30,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/uploads", express.static("uploads"));
 
+
+app.use("/geoAPI", GeoAPIRoutes);
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
 app.use("/admin", adminRoutes);
@@ -43,6 +46,7 @@ app.use('/topic', topicRoutes);
 app.use('/topic/:city', postsRoutes);
 app.use('/posts', postsRoutes);
 app.use('/posts/:city', postsRoutes);
+app.use('/:city/posts/:postId', postsRoutes);
 
 
 

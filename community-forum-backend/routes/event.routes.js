@@ -2,7 +2,10 @@
 const express = require("express");
 const router = express.Router();
 const eventController = require("../controllers/event.controller");
+const GeoAPIController = require("../controllers/GeoAPI.controller");
 const fileUploader = require("../config/cloudinary.config");
+
+router.post("/geoData", GeoAPIController.getGeoData);
 
 router.post("/", fileUploader.single("image"), eventController.createEvent);
 
