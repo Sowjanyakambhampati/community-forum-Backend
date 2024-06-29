@@ -11,7 +11,7 @@ router.get("/city/:city", productController.getProductsByCity);
 
 router.get("/:id", productController.getProductById);
 
-router.get("/productowner/:ownerId", productController.getProductByOwnerId);
+router.get("/productowner/:productOwner", productController.getProductsByProductOwner);
 
 router.put("/", fileUploader.single("image"), productController.updateProduct);
 

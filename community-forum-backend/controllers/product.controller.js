@@ -67,15 +67,15 @@ class ProductController {
         }
     }
 
-    // Get product by Product Owner
-    async getProductByOwnerId(req, res) {
+    // product.controller.js
+    async getProductsByProductOwner(req, res) {
         try {
-            const productOwnerId = req.params.ownerId;
-            const product = await Product.findByProductOwner(productOwnerId);
-            if (!product) {
-                return res.status(404).send("Product not found");
+            const productOwner = req.params.productOwner;
+            const products = await Product.find({ productOwner: productOwner });
+            if (!products) {
+                return res.status(404).send("Products not found");
             }
-            res.send(product);
+            res.send(products);
         } catch (error) {
             res.status(500).send(error);
         }
