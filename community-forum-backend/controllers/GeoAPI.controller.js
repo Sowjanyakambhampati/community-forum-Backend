@@ -1,68 +1,21 @@
-//GeoAPI controller
-const GeoAPI = require('../models/GeoAPI.model');
-const axios = require('axios');
-const { response } = require('express');
+// controllers/GeoAPI.controller.js
+const geocodeAddress = require('../utils/geocode');
 
-
-
-const getGeoData = async (req, res) => {
+class GeoAPIController {
+  async getGeoData(req, res) {
+    const { address } = req.body;
+    
     try {
-        const response = await axios.get(`https://geocode.xyz/${req.params.address}?json=1`);
-        const data = response.data;
-        const geoData = new GeoAPI({
-            latitude: data.latt,
-            longitude: data.longt,
-            address: data.standard.city
-        });
-        await geoData.save();
-        res.json(geoData);
-    } catch (err) {
-        res.status(400).send(err);
+      const location = await geocodeAddress(address);
+      res.status(200).json(location);
+    } catch (error) {
+      res.status(500).json({ error: 'Geocoding failed', message: error.message });
     }
+  }
+ 
+
 }
 
-const getGeoDataById = async (req, res) => {
-    try {
-        const geoData = await GeoAPI.findById(req.params.id);
-        res.json(geoData);
-    } catch (err) {
-        res.status(400).send(err);
-    }
-}
 
-const getAllGeoData = async (req, res) => {
-    try {
-        const geoData = await GeoAPI.find();
-        res.json(geoData);
-    } catch (err) {
-        res.status(400).send(err);
-    }
-}
 
-const updateGeoData = async (req, res) => { 
-    try {
-        const response = await axios.get(`https://geocode.xyz/${req.body.address}?json=1`);
-        const data = response.data;
-        const geoData = {
-            latitude: data.latt,
-            longitude: data.longt,
-            address: data.standard.city
-        };
-        await GeoAPI.findByIdAndUpdate(req.params.id, geoData);
-        res.json(geoData);
-    } catch (err) {
-        res.status(400).send(err);
-    }
-}
-
-const deleteGeoData = async (req, res) => {
-    try {
-        await GeoAPI.findByIdAndDelete(req.params.id);
-        res.json('Geo data deleted');
-    } catch (err) {
-        res.status(400).send(err);
-    }
-}
-
-module.exports = { getGeoData, getGeoDataById, getAllGeoData, updateGeoData, deleteGeoData };
-
+module.exports = new GeoAPIController();
