@@ -1,41 +1,43 @@
 //event.controller.js
 
 const Event = require("../models/Event.model.js");
+const geocodeAddress = require('../utils/geocode');
+
+
+
 
 class EventController {
     
-        // Create a new event
-        async createEvent(req, res,next) {
+    // Create a new event
+       
+    async createEvent(req, res) {
             // check if there's an image
             if (!req.file) {
-                next(new Error("No image uploaded!"));
-                return;
+            res.status(400).send("No image uploaded!");
+            return;
             }
-
             
-        console.log(req.body)
-        console.log(req.file.path)
             try {
-                const event = new Event({ image: req.file.path, ...req.body });
-                await event.save();
-                res.status(201).send(event);
-            }
-            catch (error) {
-                res.status(400).send(error);
+            const location = await geocodeAddress(req.body.location);
+            const event = new Event({ image: req.file.path, location, ...req.body });
+            await event.save();
+            res.status(201).send(event);
+            } catch (error) {
+            res.status(400).send(error);
             }
         }
-        
-         // Get all events
 
+     // Get all events  
         async getAllEvents(req, res) {
             try {
-                const events = await Event.find({});
+                const events = await Event.find();
                 res.send(events);
             } catch (error) {
                 res.status(500).send(error);
             }
         }
-
+        
+        
         // Get all events by city
 
         async getEventsByCity(req, res) {
