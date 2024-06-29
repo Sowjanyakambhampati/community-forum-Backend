@@ -12,22 +12,22 @@ const eventSchema = new Schema({
     required: true,
   },
   location: {
-      type: {
-        type: String,
-        enum: ["Point"],
+    type: {
+      type: String,
+      enum: ["Point"],
+      required: true,
+    },
+    coordinates: {
+      latitude: {
+        type: Number,
         required: true,
       },
-      coordinates: {
-        latitude: {
-          type: Number,
-          required: true,
-        },
-        longitude: {
-          type: Number,
-          required: true,
-        },
+      longitude: {
+        type: Number,
+        required: true,
       },
     },
+  },
   image: {
     type: String,
     required: true,
@@ -42,26 +42,25 @@ const eventSchema = new Schema({
   },
   city: {
     type: String,
-    required: true,
+    required: false,
   },
   participants: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
+    type: String,
+    required: false,
   }],
   time: {
     type: String,
-    required: true,
+    required: false,
   },
   price: {
     type: String,
     enum: ["Paid", "Free"],
-    required: true,
+    required: false,
   },
   category: {
     type: String,
     enum: ["Art and Culture", "Health and Wellness", "Entertainment", "Sports", "Technology", "Education", "Community & Environment", "Career"],
-    required: true,
+    required: false,
   },
 });
 

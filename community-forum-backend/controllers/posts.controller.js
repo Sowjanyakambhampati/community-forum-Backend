@@ -11,9 +11,9 @@ class PostsController {
         }
         console.log(req.body)
         console.log(req.file.path)
-        
+
         try {
-            const posts = new Posts( { image: req.file.path, ...req.body });
+            const posts = new Posts({ image: req.file.path, ...req.body });
             await posts.save();
             res.status(201).send(posts);
         } catch (error) {
@@ -27,7 +27,7 @@ class PostsController {
             const posts = await Posts.find({});
             res.send(posts);
         } catch (error) {
-            res.status(500).send (error);
+            res.status(500).send(error);
         }
     }
 
@@ -48,19 +48,21 @@ class PostsController {
 
     // Get  posts by city
     async getPostsByCity(req, res) {
+        console.log("x")
         try {
             const city = req.params.city;
-            const posts = await Posts.find({});
+            const posts = await Posts.find({ city });
+            console.log(posts)
             if (!posts) {
                 return res.status(404).send("posts not found");
             }
             res.send(posts);
         }
         catch (error) {
-            res.status(500).send (error);
+            res.status(500).send(error);
         }
     }
-    
+
 
 
     // Update  post
