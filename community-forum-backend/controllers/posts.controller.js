@@ -46,6 +46,23 @@ class PostsController {
         }
     }
 
+    //posts.controller.js
+
+    // Get  posts by post author
+    async getPostsByPostAuthor(req, res) {
+        try {
+            const postAuthor = req.params.postAuthor;
+            const posts = await Posts.find({ postAuthor });
+            if (!posts) {
+                return res.status(404).send("posts not found");
+            }
+            res.send(posts);
+        }
+        catch (error) {
+            res.status(500).send(error);
+        }
+    }
+
     // Get  posts by city
     async getPostsByCity(req, res) {
         console.log("x")
