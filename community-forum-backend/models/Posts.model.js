@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const postsSchema = new Schema({
   
-  city: { type: String, required: true },
-  title: { type: String, required: true },
-  content: { type: String, required: true },
-  author: { type: String, required: true},
+  city: { type: String, required: false},
+  title: { type: String, required: false },
+  content: { type: String, required: false },
+  postauthor: { type: String, required: false},
   image : { type : String, contentType: String },
   contactInfo: { type: String, required: false },
- createdAt: { type: Date, default: Date.now, required: true },
+ createdAt: { type: Date, default: Date.now, required: false },
 });
 const Posts = mongoose.model('Posts', postsSchema);
 module.exports = Posts;
