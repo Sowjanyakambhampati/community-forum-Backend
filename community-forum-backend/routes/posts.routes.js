@@ -13,7 +13,7 @@ router.get("/city/:city", postsController.getPostsByCity);
 
 router.get("/:id", postsController.getPostById);
 
-router.post(" /postauthor/:postAuthor", postsController.getPostsByPostAuthor);
+router.get(" /postauthor/:postAuthor", postsController.getPostsByPostAuthor);
 
 router.put("/", fileUploader.single("image"), postsController.updatePost);
 
