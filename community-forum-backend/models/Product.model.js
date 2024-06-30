@@ -9,7 +9,8 @@ const productSchema = new Schema({
   description: { type : String, required : false },
   condition : {type : String},
   productOwner : { type : String},
-  category : { type : String , required : false}
+  category : { type : String , required : false},
+  reservedById : { type : String, required: false},
  
 });
 

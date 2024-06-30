@@ -8,13 +8,13 @@ class ProductController {
 
         // check if there's an image
 
-        if (!req.file) {
-            next(new Error("No image uploaded!"));
-            return;
-        }
+        // if (!req.file) {
+        //     next(new Error("No image uploaded!"));
+        //     return;
+        // }
 
         console.log(req.body)
-        console.log(req.file.path)
+        // console.log(req.file.path)
 
 
         try {
@@ -67,6 +67,21 @@ class ProductController {
         }
     }
 
+    // product.controller.js
+    async getProductsByProductOwner(req, res) {
+        try {
+            const productOwner = req.params.productOwner;
+            const products = await Product.find({ productOwner: productOwner });
+            if (!products) {
+                return res.status(404).send("Products not found");
+            }
+            res.send(products);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    }
+
+
     // Get products by city
     async getProductsByCity(req, res) {
         try {
@@ -87,6 +102,7 @@ class ProductController {
         try {
             const productId = req.params.id;
             const updates = req.body;
+            console.log("Updated Product::" + updates.reservedById);
             const options = { new: true }; // Return the updated product
             const updatedProduct = await Product.findByIdAndUpdate(productId, updates, options);
             if (!updatedProduct) {
