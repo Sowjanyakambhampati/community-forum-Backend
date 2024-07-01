@@ -22,8 +22,12 @@ class EventController {
 
             const { coordinates } = req.body.location
             const { latitude, longitude } = coordinates
-            const location = await geocodeAddress(`${latitude},${longitude}`);
-            const event = new Event({ image: req.file.path, location, ...req.body });
+
+            // const location = await fetchAddress(`${latitude}`,`${longitude}`);
+            const locationUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+
+           // const location = await geocodeAddress(`${latitude}`,`${longitude}`);
+            const event = new Event({ image: req.file.path, locationUrl, ...req.body });
             await event.save();
             res.status(201).send(event);
         } catch (error) {
