@@ -95,7 +95,6 @@ class ProductController {
         }
     }
 
-
     // Get products by city
     async getProductsByCity(req, res) {
         try {
