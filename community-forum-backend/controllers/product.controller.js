@@ -81,6 +81,21 @@ class ProductController {
         }
     }
 
+    // Get product by productOwnerName
+    async getProductsByProductOwnerName(req, res) {
+        try {
+            const productOwnerName = req.params.productOwnerName;
+            const products = await Product.find({ productOwnerName: productOwnerName });
+            if (!products) {
+                return res.status(404).send("Products not found");
+            }
+            res.send(products);
+        }
+        catch (error) {
+            res.status(500).send(error);
+        }
+    }
+    
 
     // Get products by city
     async getProductsByCity(req, res) {

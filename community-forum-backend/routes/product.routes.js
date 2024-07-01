@@ -13,6 +13,8 @@ router.get("/:id", productController.getProductById);
 
 router.get("/productowner/:productOwner", productController.getProductsByProductOwner);
 
+router.get("/prodctownername/:productOwnerName", productController.getProductsByProductOwnerName);
+
 router.put("/", fileUploader.single("image"), productController.updateProduct);
 
 router.put("/:id", productController.updateProduct);
