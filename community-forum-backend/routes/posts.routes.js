@@ -12,8 +12,8 @@ router.get("/", postsController.getAllPosts);
 router.get("/city/:city", postsController.getPostsByCity);
 
 router.get("/:id", postsController.getPostById);
+router.get("/postauthor/:id", postsController.getPostsByPostAuthor);
 
-router.post(" /postauthor/:postAuthor", postsController.getPostsByPostAuthor);
 
 router.put("/", fileUploader.single("image"), postsController.updatePost);
 
