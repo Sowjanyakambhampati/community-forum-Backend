@@ -23,6 +23,7 @@ mongoose
   .catch((err) => console.error("Error connecting to mongo", err));
 const app = express();
 const cors = require("cors");
+const axios = require("axios");
 app.use(cors());
 app.use(express.json());
 
@@ -50,7 +51,18 @@ app.use('/posts', postsRoutes);
 app.use('/posts/:city', postsRoutes);
 app.use('/:city/posts/:postId', postsRoutes);
 
+app.get('/geocode', async (req, res) => {
+  const { lat, lng } = req.query;
+  const apiKey = 'AIzaSyDlI0rjqyb4QaMqwbkKxunIhmZ4ZdBzFMY'; // Replace with your actual API key
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
 
+  try {
+    const response = await axios.get(url);
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching data' });
+  }
+});
 
 
 app.listen(5005, () => console.log("App listening on port 5005"));
