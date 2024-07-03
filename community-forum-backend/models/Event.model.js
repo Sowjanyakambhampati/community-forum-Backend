@@ -48,10 +48,6 @@ const eventSchema = new Schema({
     type: String,
     required: false,
   },
-  participants: [{
-    type: String,
-    required: false,
-  }],
   time: {
     type: String,
     required: false,
