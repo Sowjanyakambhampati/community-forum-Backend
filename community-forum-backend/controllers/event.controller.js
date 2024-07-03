@@ -77,6 +77,20 @@ class EventController {
         }
     }
 
+    //event registered by user
+    async getEventsByUser(req, res) {
+        try {
+            const userId = req.params.id;
+            const events = await Event.find({ userId: userId });
+            if (!events) {
+                return res.status(404).send("Events not found");
+            }
+            res.send(events);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    }
+
 
 
     //update an event by id

@@ -14,6 +14,9 @@ router.get("/city/:city", eventController.getEventsByCity);
 
 router.get("/:id", eventController.getEventById);
 
+router.get("/user/:id", eventController.getEventsByUser);
+
+
 router.put("/", fileUploader.single("image"), eventController.updateEvent);
 
 router.put("/:id", eventController.updateEvent);
