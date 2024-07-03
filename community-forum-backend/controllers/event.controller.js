@@ -77,6 +77,22 @@ class EventController {
         }
     }
 
+    
+     // Events registered by user
+         
+     async getEventsRegisteredByUser(req, res) {
+        try {
+            const userId = req.params.userId;
+            const events = await Event.find({ registeredUsers: userId });
+            if (!events) {
+                return res.status(404).send("No events registered by user");
+            }
+            res.send(events);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    }
+
 
 
     //update an event by id
