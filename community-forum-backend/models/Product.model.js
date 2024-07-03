@@ -11,6 +11,7 @@ const productSchema = new Schema({
   productOwner : { type : String},
   category : { type : String , required : false},
   reservedById : { type : String, required: false},
+  ownerName : { type : String, required: false},
  
 });
 
