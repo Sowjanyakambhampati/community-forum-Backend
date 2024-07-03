@@ -7,8 +7,8 @@ const productSchema = new Schema({
   price: { type: Number, required: true },
   image : { type : String, contentType: String },
   description: { type : String, required : false },
-  condition : {type : String},
-  productOwner : { type : String},
+  condition : {type : String, required : false},
+  productOwner : { type : String, required: false },
   category : { type : String , required : false},
   reservedById : { type : String, required: false},
  
