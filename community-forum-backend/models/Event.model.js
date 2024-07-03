@@ -67,6 +67,13 @@ const eventSchema = new Schema({
     enum: ["Art and Culture", "Health and Wellness", "Entertainment", "Sports", "Technology", "Education", "Community & Environment", "Career"],
     required: false,
   },
+  registeredUsers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  
 });
 
 //eventSchema.index({ location: "2dsphere" });
