@@ -11,6 +11,10 @@ const eventSchema = new Schema({
     type: Date,
     required: true,
   },
+  address:{
+    type: String,
+    required : true
+  },
   locationUrl : {
     type: String,
     required: false,
@@ -48,6 +52,7 @@ const eventSchema = new Schema({
     type: String,
     required: false,
   },
+ 
   time: {
     type: String,
     required: false,
