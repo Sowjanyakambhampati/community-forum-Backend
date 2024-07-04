@@ -14,6 +14,8 @@ router.get("/city/:city", eventController.getEventsByCity);
 
 router.get("/:id", eventController.getEventById);
 
+router.get('/user/:userId/registered-events', eventController.getUserRegisteredEvents);
+
 router.get("/registeredUsers/:id", eventController.getRegisteredUsers);
 
 router.put("/", fileUploader.single("image"), eventController.updateEvent);
@@ -23,5 +25,8 @@ router.put("/:id", eventController.updateEvent);
 router.delete("/", eventController.deleteEvent);
 
 router.delete("/:id", eventController.deleteEvent);
+
+// Register event route
+router.post("/register", eventController.registerEvent);
 
 module.exports = router;

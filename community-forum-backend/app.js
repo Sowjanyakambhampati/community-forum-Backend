@@ -44,6 +44,8 @@ app.use('/product', productRoutes);
 app.use('/product/:city', productRoutes);
 app.use('/event', eventRoutes);
 app.use('/event/:city', eventRoutes);
+app.use('/event/user/:userId/registered-events', eventRoutes);
+app.use("/event/registeredUsers/:id", eventRoutes);
 app.use('/city/:city/event/:eventId', eventRoutes);
 app.use('/topic', topicRoutes);
 app.use('/topic/:city', postsRoutes);
