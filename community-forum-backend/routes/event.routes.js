@@ -8,9 +8,14 @@ router.post("/geoData", GeoAPIController.getGeoData);
 
 router.post("/", fileUploader.single("image"), eventController.createEvent);
 
+router.put("/register", eventController.registerForEvent);
+
+
 router.get("/", eventController.getAllEvents);
 
 router.get("/city/:city", eventController.getEventsByCity);
+
+router.get("/registeredevents/:registeredId", eventController.getEventsByRegisteredId);
 
 router.get("/:id", eventController.getEventById);
 

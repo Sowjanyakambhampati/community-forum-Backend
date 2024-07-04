@@ -62,6 +62,22 @@ class EventController {
         }
     }
 
+    // Get all events by registered person
+
+    async getEventsByRegisteredId(req, res) {
+        try {
+            const registeredId = req.params.registeredId;
+            const events = await Event.find({ participants: registeredId });
+            if (!events) {
+                return res.status(404).send("Events not found");
+            }
+            res.send(events);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    }
+
+
     // Get event by id
     async getEventById(req, res) {
         try {
@@ -111,6 +127,22 @@ class EventController {
         }
     }
 
+
+    //update an event by id
+    async registerForEvent(req, res) {
+        try {
+            const eventId = req.params.id;
+            const updates = req.body;
+            const options = { new: true }; // Return the updated event
+            const updatedEvent = await Event.findByIdAndUpdate(eventId, updates, options);
+            if (!updatedEvent) {
+                return res.status(404).send("Event not found");
+            }
+            res.send(updatedEvent);
+        } catch (error) {
+            res.status(400).send(error);
+        }
+    }
 
 
     // Delete event by id
