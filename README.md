@@ -112,6 +112,10 @@ router.delete("/:id", postsController.deletePost);
 
 @Ama Tetsewa
 
+### Demo Link
+
+https://community-forum-backend.adaptable.app
+
 
 
 
