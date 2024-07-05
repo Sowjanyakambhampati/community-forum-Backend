@@ -10,6 +10,7 @@ const authRoutes = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const adminRoutes = require("./routes/admin.routes");
 const dashboardRoutes = require("./routes/dashboard.routes");
+const emailRoutes = require("./routes/email.routes");
 const geoAPIRoutes = require('./routes/GeoAPI.routes');
 const nodemailer = require('nodemailer');
 
@@ -49,6 +50,7 @@ app.use('/city/:city/event/:eventId', eventRoutes);
 app.use('/posts', postsRoutes);
 app.use('/posts/:city', postsRoutes);
 app.use('/:city/posts/:postId', postsRoutes);
+app.use('/email', emailRoutes);
 
 app.get('/geocode', async (req, res) => {
     const {lat, lng} = req.query;
