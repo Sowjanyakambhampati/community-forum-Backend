@@ -67,7 +67,7 @@ app.get('/geocode', async (req, res) => {
 app.post('/send-email', async (req, res) => {
     const transporter = nodemailer.createTransport(
         {
-            host: 'smtp.example.com',
+            host: 'smtp.gmail.com',
             port: 587,
             secure: false,
             auth: {
