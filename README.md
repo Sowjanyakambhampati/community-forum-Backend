@@ -22,15 +22,13 @@ This is the backend for the Community App, a social networking application built
     Create a `.env` file in the root directory and add the following variables:
     
     PORT=5005
-     "mongodb+srv://community-forum:0v44NdQ3C3RFLBye@community-forum-cluster.c0vfqhs.mongodb.net/?retryWrites=true&w=majority&appName=community-forum-cluster"
-ORIGIN=http://localhost:3000
-
+    
 ### Environment Variables
 
 | Variable       | Description                                         |
 | -------------- | --------------------------------------------------- |
 | `PORT`         | 5005       |
-| `MONGODB_URI`  |  "mongodb+srv://community-forum:0v44NdQ3C3RFLBye@community-forum-cluster.c0vfqhs.mongodb.net/?retryWrites=true&w=majority&appName=community-forum-cluster"                      |
+
 
 ## Usage
 
