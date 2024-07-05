@@ -108,9 +108,13 @@ router.delete("/:id", postsController.deletePost);
 
 ### Authors
 
+- [
 @Sowjanya Kambhampati
+](https://github.com/sowjanyakambhampati)
 
-@Ama Tetsewa
+- [
+@Ama Williams
+ Tetsewa](https://github.com/Tetsewa)
 
 ### Demo Link
 
