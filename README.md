@@ -13,21 +13,23 @@ This is the backend for the Community App, a social networking application built
 
 2. **Install dependencies:**
    
-   npm install node
-   npm install express
+  -  npm install node
+   - npm install express
+   - npm install cloudinary
    
 
 4. **Set up environment variables:**
     Create a `.env` file in the root directory and add the following variables:
     
-    PORT=5000
+    PORT=5005
      "mongodb+srv://community-forum:0v44NdQ3C3RFLBye@community-forum-cluster.c0vfqhs.mongodb.net/?retryWrites=true&w=majority&appName=community-forum-cluster"
+ORIGIN=http://localhost:3000
 
 ### Environment Variables
 
 | Variable       | Description                                         |
 | -------------- | --------------------------------------------------- |
-| `PORT`         | 5000       |
+| `PORT`         | 5005       |
 | `MONGODB_URI`  |  "mongodb+srv://community-forum:0v44NdQ3C3RFLBye@community-forum-cluster.c0vfqhs.mongodb.net/?retryWrites=true&w=majority&appName=community-forum-cluster"                      |
 
 ## Usage
@@ -36,89 +38,30 @@ This is the backend for the Community App, a social networking application built
     
    node app.js
    
-   The server will start on `http://localhost:5000`.
+   The server will start on `http://localhost:5005`.
 
 ## API Endpoints
 
-### Register for the events
+### Register for the events:  Get /event
 
-router.post("/geoData", GeoAPIController.getGeoData);
+### For products : Get /products
 
-router.post("/", fileUploader.single("image"), eventController.createEvent);
+### For posts : Get /posts
 
-router.put("/register", eventController.registerForEvent);
 
-router.get("/", eventController.getAllEvents);
-
-router.get("/city/:city", eventController.getEventsByCity);
-
-router.get("/registeredevents/:registeredId", eventController.getEventsByRegisteredId);
-
-router.get("/:id", eventController.getEventById);
-
-router.put("/", fileUploader.single("image"), eventController.updateEvent);
-
-router.put("/:id", eventController.updateEvent);
-
-router.delete("/", eventController.deleteEvent);
-
-router.delete("/:id", eventController.deleteEvent);
-
-### For products
-
-router.post("/", fileUploader.single("image"), productController.createProduct);
-
-router.get("/", productController.getAllProducts);
-
-router.get("/city/:city", productController.getProductsByCity);
-
-router.get("/:id", productController.getProductById);
-
-router.get("/productowner/:productOwner", productController.getProductsByProductOwner);
-
-router.get("/reservedproducts/:reservedById", productController.getProductsByUserReserved);
-
-router.put("/", fileUploader.single("image"), productController.updateProduct);
-
-router.put("/:id", productController.updateProduct);
-
-router.delete("/", productController.deleteProduct);
-
-router.delete("/:id", productController.deleteProduct);
-
-### For posts
-
-router.post("/", fileUploader.single("image"), postsController.createPost);
-
-router.get("/", postsController.getAllPosts);  
-
-router.get("/city/:city", postsController.getPostsByCity);
-
-router.get("/:id", postsController.getPostById);
-
-router.get("/postauthor/:postAuthor", postsController.getPostsByPostAuthor);
-
-router.put("/", fileUploader.single("image"), postsController.updatePost);
-
-router.put("/:id", postsController.updatePost);
-
-router.delete("/", postsController.deletePost);
-
-router.delete("/:id", postsController.deletePost);
 
 ### Authors
 
-- [
-@Sowjanya Kambhampati
-](https://github.com/sowjanyakambhampati)
+- [@Sowjanya Kambhampati](https://github.com/sowjanyakambhampati)
 
-- [
-@Ama Williams
- Tetsewa](https://github.com/Tetsewa)
+- [@Ama Williams Tetsewa](https://github.com/Tetsewa)
 
 ### Demo Link
 
 https://community-forum-backend.adaptable.app
+
+### Support
+For support and suggestions, email sowjanyaakella87@gmail.com or amatwilliams@gmail.com.
 
 
 
