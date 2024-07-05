@@ -40,13 +40,13 @@ ORIGIN=http://localhost:3000
    
    The server will start on `http://localhost:5005`.
 
-## API Endpoints
+### API Endpoints
 
-### Register for the events:  Get /event
+- Register for the events:  Get /event
 
-### For products : Get /products
+- For products : Get /products
 
-### For posts : Get /posts
+-  For posts : Get /posts
 
 
 
