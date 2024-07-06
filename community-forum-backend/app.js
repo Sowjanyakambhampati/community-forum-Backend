@@ -66,32 +66,6 @@ app.get('/geocode', async (req, res) => {
 });
 
 
-app.post('/send-email', async (req, res) => {
-    const transporter = nodemailer.createTransport(
-        {
-            host: 'smtp.gmail.com',
-            port: 587,
-            secure: false,
-            auth: {
-                user: 'info.buurthub@gmail.com',
-                pass: 'gtnyrirmubzfzngo',
-            },
-        }
-    );
-    transporter.sendMail(
-        {
-            to: 'viswanath16@gmail.com',
-            subject: 'My subject',
-            html: '<h1> Hi How are you</h1>'
-        }
-    ).then(() => {
-        console.log('Email sent');
-    }).catch((error) => {
-        console.error('Error sending email', error);
-    });
-});
-
-
 app.listen(5005, () => console.log("App listening on port 5005"));
 
 module.exports = app;
