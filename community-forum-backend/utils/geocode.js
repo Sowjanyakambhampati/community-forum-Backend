@@ -25,10 +25,10 @@ async function geocodeAddress(lat, log) {
 
     console.log("Address - URL::" + url);
     const response = await axios.get(url);
-    console.log("Location VISWA::" + location);
+    console.log("Location Sowji::" + location);
     if (response.data.status === 'OK') {
       const location = response.data.results[0].geometry.location;
-      console.log("Location VISWA::" + location);
+      console.log("Location Sowji::" + location);
       return location; // { lat: ..., lng: ... }
     } else {
       throw new Error('Geocoding failed');
