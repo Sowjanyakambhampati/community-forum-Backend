@@ -15,6 +15,8 @@ router.get("/productowner/:productOwner", productController.getProductsByProduct
 
 router.get("/reservedproducts/:reservedById", productController.getProductsByUserReserved);
 
+router.get("/favouriteproducts/:favouriteById", productController.getProductsByUserFavourite);
+
 router.put("/", fileUploader.single("image"), productController.updateProduct);
 
 router.put("/:id", productController.updateProduct);

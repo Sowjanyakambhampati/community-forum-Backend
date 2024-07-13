@@ -11,6 +11,7 @@ const productSchema = new Schema({
   productOwner : { type : String, required: false },
   category : { type : String , required : false},
   reservedById : { type : String, required: false},
+  favouriteById : { type : String, required: false},
  
 });
 

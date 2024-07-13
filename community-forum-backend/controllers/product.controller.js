@@ -94,6 +94,19 @@ class ProductController {
             res.status(500).send(error);
         }
     }
+    // product favourite
+    async getProductsByUserFavourite(req, res) {
+        try {
+            const favouriteById = req.params.favouriteById;
+            const products = await Product.find({ favouriteById: favouriteById });
+            if (!products) {
+                return res.status(404).send("Favourite Products not found");
+            }
+            res.send(products);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    }
 
     // Get products by city
     async getProductsByCity(req, res) {
