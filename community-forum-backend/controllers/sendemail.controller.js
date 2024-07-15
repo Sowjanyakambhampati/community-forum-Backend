@@ -1,4 +1,3 @@
-
 const nodemailer = require("nodemailer");
 
 class EmailController {
@@ -29,32 +28,32 @@ class EmailController {
         });
     }
 
-//     //Reserve product with image by node mailer
-//     async reserveProduct(req, res) {
-//         const transporter = nodemailer.createTransport(
-//             {
-//                 host: 'smtp.gmail.com',
-//                 port: 465,
-//                 secure: true,
-//                 auth: {
-//                     user: 'info@buurthub.com',
-//                     pass: 'gtnyrirmubzfzngo',
-//                 },
-//             }
-//         );
-//         transporter.sendMail(
-//             {
-//                 to: req.body.email,
-//                 subject: 'BuurtHub - Product Reservation notification !!',
-//                 html: '<h1> Hello,  Reservation successful and email sent!</h1>'
-//             }
-//         ).then(() => {
-//             console.log('Email sent');
-//         }).catch((error) => {
-//             console.error('Error sending email', error);
-//         });
-// }
 
+    //Reserve product with image by node mailer
+    async sendEmailProdOwner(req, res) {
+        const transporter = nodemailer.createTransport(
+            {
+                host: 'smtp.gmail.com',
+                port: 465,
+                secure: true,
+                auth: {
+                    user: 'info.buurthub@gmail.com',
+                    pass: 'gtnyrirmubzfzngo',
+                },
+            }
+        );
+        transporter.sendMail(
+            {
+                to: req.body.userEmail,
+                subject: 'BuurtHub - Product Reservation notification !!',
+                html: '<h1> Hello,  Your posted product on community forum has been registered!</h1>'
+            }
+        ).then(() => {
+            console.log('Email sent');
+        }).catch((error) => {
+            console.error('Error sending email', error);
+        });
+    }
 
 
 }
