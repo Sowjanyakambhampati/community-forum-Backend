@@ -46,7 +46,7 @@ class EmailController {
             {
                 to: req.body.userEmail,
                 subject: 'BuurtHub - Product Reservation notification !!',
-                html: '<h1> Hello,  Your posted product on community forum has been reserved by req.body.reservedByEmailId  please reach user for further processing!</h1>'
+                html: '<h1> Hello,  Your posted product on community forum has been reserved by ' +  req.body.reservedByEmailId +' please reach user for further processing!</h1>'
             }
         ).then(() => {
             console.log('Email sent');
