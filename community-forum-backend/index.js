@@ -4,8 +4,11 @@ require('dotenv').config();
  * Module dependencies.
  */
 
-const app = require('./app');
+//const app = require('./app');
 const http = require('http');
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
 
 /**
  * Get port from environment and store in Express.
@@ -13,6 +16,17 @@ const http = require('http');
 
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Hello from Express on Vercel!' });
+});
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
 
 /**
  * Create HTTP server.
